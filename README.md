@@ -19,3 +19,4 @@ of code and for educational purposes as I need to improve my skills in Go.
 - implement the core use cases for the first runnable version of the application
 - write tests for the core functionality
 - add the basic functionality using of an in-memory database
+- serve static files (HTML/ CSS/ JS)
