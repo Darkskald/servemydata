@@ -2,12 +2,14 @@ package inmem
 
 import (
 	"errors"
+	"log"
 	"servemydata/domain"
+	"strconv"
 )
 
 type InMemoryRepo struct {
 	Spectra   map[string]domain.Spectrum2d
-	CurrentId int64
+	CurrentId int
 }
 
 //todo add tests for all use case implementations
@@ -18,7 +20,7 @@ func NewInMemoryRepo() InMemoryRepo {
 
 func (imr *InMemoryRepo) NewId() string {
 	imr.CurrentId += 1
-	return string(imr.CurrentId)
+	return strconv.Itoa(imr.CurrentId)
 }
 
 func (imr InMemoryRepo) GetSpectrumById(id string) (domain.Spectrum2d, error) {
@@ -29,9 +31,10 @@ func (imr InMemoryRepo) GetSpectrumById(id string) (domain.Spectrum2d, error) {
 }
 
 func (imr *InMemoryRepo) AddSpectrum(d domain.Spectrum2d) (domain.Spectrum2d, error) {
-	new_id := imr.NewId()
-	d.Id = new_id
-	imr.Spectra[new_id] = d
+	newId := imr.NewId()
+	log.Printf("add spectrum with id %s", newId)
+	d.Id = newId
+	imr.Spectra[newId] = d
 	return d, nil
 }
 

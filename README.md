@@ -20,3 +20,4 @@ of code and for educational purposes as I need to improve my skills in Go.
 - write tests for the core functionality
 - add the basic functionality using of an in-memory database
 - serve static files (HTML/ CSS/ JS)
+- validate the JSON input coming from the user
